@@ -20,12 +20,13 @@ class Boy:
     UP_STAND, DOWN_STAND, LEFT_STAND, RIGHT_STAND = 4, 5, 6, 7
 
     def __init__(self):
-        self.x, self.y = 200, 90
+        self.x, self.y = 400, 90
         self.frame = random.randint(0, 11)
         self.life_time = 0.0
         self.total_frames = 0.0
         self.dirX = 0
-        self.state = self.RIGHT_STAND
+        self.dirY = 0
+        self.state = self.UP_STAND
         if Boy.image == None:
             Boy.image = load_image('boy_animation.png')
         # fill here
@@ -39,15 +40,17 @@ class Boy:
         self.total_frames += Boy.FRAMES_PER_ACTION * Boy.ACTION_PER_TIME * frame_time
         self.frame = int(self.total_frames) % 2
         self.x += (self.dirX * distance)
+        self.y += (self.dirY * distance)
 
         self.x = clamp(0, self.x, 800)
+        self.y = clamp(0, self.y, 600)
 
     def eat(self, ball):
         # fill here
         pass
 
     def draw(self):
-        self.image.clip_draw(self.frame * 100, self.state * 100, 100, 100, self.x, self.y)
+        self.image.clip_draw(self.frame * 100, self.state * 99, 100, 100, self.x, self.y)
 
     def draw_bb(self):
         draw_rectangle(*self.get_bb())
@@ -57,23 +60,44 @@ class Boy:
 
     def handle_event(self, event):
         if (event.type, event.key) == (SDL_KEYDOWN, SDLK_LEFT):
-            if self.state in (self.RIGHT_STAND, self.LEFT_STAND, self.RIGHT_RUN):
+            if self.state in (self.RIGHT_STAND, self.LEFT_STAND, self.UP_STAND, self.DOWN_STAND, self.RIGHT_RUN, self.UP_RUN, self.DOWN_RUN):
                 self.state = self.LEFT_RUN
                 self.dirX = -1
+                self.dirY = 0
         elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_RIGHT):
-            if self.state in (self.RIGHT_STAND, self.LEFT_STAND, self.LEFT_RUN):
+            if self.state in (self.RIGHT_STAND, self.LEFT_STAND, self.UP_STAND, self.DOWN_STAND, self.LEFT_RUN, self.UP_RUN, self.DOWN_RUN):
                 self.state = self.RIGHT_RUN
                 self.dirX = 1
+                self.dirY = 0
+        elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_UP):
+            if self.state in (self.RIGHT_STAND, self.LEFT_STAND, self.UP_STAND, self.DOWN_STAND, self.RIGHT_RUN, self.LEFT_RUN, self.DOWN_RUN):
+                self.state = self.UP_RUN
+                self.dirX = 0
+                self.dirY = 1
+        elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_DOWN):
+            if self.state in (self.RIGHT_STAND, self.LEFT_STAND, self.UP_STAND, self.DOWN_STAND, self.RIGHT_RUN, self.LEFT_RUN, self.UP_RUN):
+                self.state = self.DOWN_RUN
+                self.dirX = 0
+                self.dirY = -1
         elif (event.type, event.key) == (SDL_KEYUP, SDLK_LEFT):
             if self.state in (self.LEFT_RUN,):
                 self.state = self.LEFT_STAND
                 self.dirX = 0
+                self.dirY = 0
         elif (event.type, event.key) == (SDL_KEYUP, SDLK_RIGHT):
             if self.state in (self.RIGHT_RUN,):
                 self.state = self.RIGHT_STAND
                 self.dirX = 0
-
-
-
+                self.dirY = 0
+        elif (event.type, event.key) == (SDL_KEYUP, SDLK_UP):
+            if self.state in (self.UP_RUN,):
+                self.state = self.UP_STAND
+                self.dirX = 0
+                self.dirY = 0
+        elif (event.type, event.key) == (SDL_KEYUP, SDLK_DOWN):
+            if self.state in (self.DOWN_RUN,):
+                self.state = self.DOWN_STAND
+                self.dirX = 0
+                self.dirY = 0
 
 

@@ -5,7 +5,7 @@ import game_framework
 
 from boy import Boy # import Boy class from boy.py
 from ball import Ball, BigBall
-from grass import Grass
+from road import Road
 
 
 
@@ -14,24 +14,24 @@ name = "main_state"
 boy = None
 balls = None
 big_balls = None
-grass = None
+road = None
 
 def create_world():
-    global boy, grass, balls, big_balls
+    global boy, road, balls, big_balls
 
     boy = Boy()
     big_balls = [BigBall() for i in range(10)]
     balls = [Ball() for i in range(10)]
     balls = big_balls + balls
-    grass = Grass()
+    road = Road()
 
 
 def destroy_world():
-    global boy, balls, grass
+    global boy, balls, road
 
     del(boy)
     del(balls)
-    del(grass)
+    del(road)
 
 
 
@@ -82,6 +82,8 @@ def collide(a, b):
 
 def update(frame_time):
     boy.update(frame_time)
+    road.update(frame_time)
+
     for ball in balls:
         ball.update(frame_time)
 
@@ -90,15 +92,14 @@ def update(frame_time):
             balls.remove(ball)
             # fill here
 
-
     for ball in big_balls:
-        if collide(grass, ball):
+        if collide(road, ball):
             ball.stop()
 
 
 def draw(frame_time):
     clear_canvas()
-    grass.draw()
+    road.draw()
     boy.draw()
     for ball in balls:
         ball.draw()

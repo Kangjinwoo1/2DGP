@@ -20,7 +20,7 @@ class Boy:
     UP_STAND, DOWN_STAND, LEFT_STAND, RIGHT_STAND = 4, 5, 6, 7
 
     def __init__(self):
-        self.x, self.y = 400, 80
+        self.x, self.y = 400, 180
         self.frame = random.randint(0, 11)
         self.life_time = 0.0
         self.total_frames = 0.0

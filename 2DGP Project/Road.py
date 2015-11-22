@@ -12,16 +12,26 @@ class Road:
     image = None
 
     def __init__(self):
-        self.x, self.y = 400, 600
+        self.screen_width = 800
+        self.screen_height = 600
+        self.screen_width_half = 400
+        self.screen_height_half = 300
+        self.x, self.y1, self.y2 = self.screen_width_half, self.screen_height_half, self.screen_height_half + self.screen_height
         self.game_speed = 0.1
         if Road.image == None:
             Road.image = load_image('road.png')
 
     def update(self, frame_time):
-        self.y -= self.game_speed
+        self.y1 -= self.game_speed
+        self.y2 -= self.game_speed
+        if self.y1 <= -self.screen_height_half:
+            self.y1 = self.screen_height_half + self.screen_height
+        if self.y2 <= -self.screen_height_half:
+            self.y2 = self.screen_height_half + self.screen_height
 
     def draw(self):
-        self.image.draw(self.x, self.y)
+        self.image.clip_draw(0, 0, self.screen_width, self.screen_height, self.x, self.y1)
+        self.image.clip_draw(0, self.screen_height, self.screen_width, self.screen_height, self.x, self.y2)
 
     def draw_bb(self):
         #draw_rectangle(*self.get_bb())

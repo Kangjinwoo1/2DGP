@@ -4,7 +4,7 @@ import game_framework
 
 
 from boy import Boy # import Boy class from boy.py
-from car import Car, BigBall
+from car import RedCar, Truck
 from road import Road
 
 
@@ -12,25 +12,25 @@ from road import Road
 name = "main_state"
 
 boy = None
-balls = None
-big_balls = None
+red_cars = None
+trucks = None
 road = None
 
 def create_world():
-    global boy, road, balls, big_balls
+    global boy, road, red_cars, trucks
 
     boy = Boy()
-    big_balls = [BigBall() for i in range(10)]
-    balls = [Car() for i in range(10)]
-    balls = big_balls + balls
+    trucks = [Truck() for i in range(3)]
+    red_cars = [RedCar() for i in range(5)]
+    red_cars = trucks + red_cars
     road = Road()
 
 
 def destroy_world():
-    global boy, balls, road
+    global boy, red_cars, road
 
     del(boy)
-    del(balls)
+    del(red_cars)
     del(road)
 
 
@@ -81,34 +81,35 @@ def collide(a, b):
 
 
 def update(frame_time):
-    boy.update(frame_time)
     road.update(frame_time)
 
-    for ball in balls:
-        ball.update(frame_time)
+    for car in red_cars:
+        car.update(frame_time)
 
-    for ball in balls:
-        if collide(boy, ball):
-            balls.remove(ball)
+    for car in red_cars:
+        if collide(boy, car):
+            red_cars.remove(car)
             # fill here
 
-    for ball in big_balls:
-        if collide(road, ball):
-            ball.stop()
+    for car in trucks:
+        if collide(road, car):
+            car.stop()
+
+    boy.update(frame_time)
 
 
 def draw(frame_time):
     clear_canvas()
     road.draw()
-    boy.draw()
-    for ball in balls:
-        ball.draw()
+    for car in red_cars:
+        car.draw()
 
     road.draw_bb()
     boy.draw_bb()
-    for ball in balls:
-        ball.draw_bb()
+    for car in red_cars:
+        car.draw_bb()
 
+    boy.draw()
     update_canvas()
 
 

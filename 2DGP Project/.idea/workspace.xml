@@ -31,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="boy.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="boy.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/boy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.38425925">
+              <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -43,21 +43,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ball.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ball.py">
+      <file leaf-file-name="car.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/car.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
+              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="road.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="road.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/road.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64506173">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -69,7 +71,7 @@
         <entry file="file://C:/Python34/Lib/site-packages/pico2d.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+              <caret line="329" column="25" selection-start-line="329" selection-start-column="25" selection-end-line="329" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -106,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/main_state.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+              <caret line="92" column="23" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -145,14 +147,14 @@
         <option value="$PROJECT_DIR$/mygame.py" />
         <option value="$PROJECT_DIR$/game_framework.py" />
         <option value="$PROJECT_DIR$/Road.py" />
-        <option value="$PROJECT_DIR$/main_state.py" />
-        <option value="$PROJECT_DIR$/boy.py" />
         <option value="$PROJECT_DIR$/road.py" />
+        <option value="$PROJECT_DIR$/main_state.py" />
+        <option value="$PROJECT_DIR$/car.py" />
+        <option value="$PROJECT_DIR$/boy.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
     <option name="width" value="960" />
     <option name="height" value="1040" />
   </component>
@@ -457,7 +459,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="1" />
+    <frame x="0" y="0" width="960" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18008475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -522,11 +524,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ball.py">
+    <entry file="file://$PROJECT_DIR$/car.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -737,30 +741,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ball.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mygame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -781,33 +767,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python34/Lib/site-packages/pico2d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/road.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/boy.py">
+    <entry file="file://$PROJECT_DIR$/road.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/road.py">
+    <entry file="file://C:/Python34/Lib/site-packages/pico2d.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64506173">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="329" column="25" selection-start-line="329" selection-start-column="25" selection-end-line="329" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="92" column="23" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/car.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38425925">
+          <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

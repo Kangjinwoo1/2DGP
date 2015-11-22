@@ -21,7 +21,7 @@ class Boy:
 
     def __init__(self):
         self.x, self.y = 400, 180
-        self.frame = random.randint(0, 11)
+        self.frame = random.randint(0, 1)
         self.life_time = 0.0
         self.total_frames = 0.0
         self.dir_x = 0
@@ -57,7 +57,22 @@ class Boy:
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):
-        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
+        if self.state == self.UP_STAND:
+            return self.x - 30, self.y - 40, self.x + 28, self.y - 25
+        elif self.state == self.UP_RUN:
+            return self.x - 30, self.y - 40, self.x + 28, self.y - 20
+        elif self.state == self.DOWN_STAND:
+            return self.x - 30, self.y - 45, self.x + 28, self.y - 30
+        elif self.state == self.DOWN_RUN:
+            return self.x - 30, self.y - 45, self.x + 28, self.y - 25
+        elif self.state == self.LEFT_STAND:
+            return self.x - 22, self.y - 45, self.x + 22, self.y - 27
+        elif self.state == self.LEFT_RUN:
+            return self.x - 37, self.y - 45, self.x + 29, self.y - 27
+        elif self.state == self.RIGHT_STAND:
+            return self.x - 17, self.y - 40, self.x + 25, self.y - 22
+        elif self.state == self.RIGHT_RUN:
+            return self.x - 34, self.y - 40, self.x + 32, self.y - 22
 
     def handle_event(self, event):
         if (event.type, event.key) == (SDL_KEYDOWN, SDLK_LEFT):

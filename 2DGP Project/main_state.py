@@ -4,7 +4,7 @@ import game_framework
 
 
 from boy import Boy # import Boy class from boy.py
-from ball import Ball, BigBall
+from car import Car, BigBall
 from road import Road
 
 
@@ -21,7 +21,7 @@ def create_world():
 
     boy = Boy()
     big_balls = [BigBall() for i in range(10)]
-    balls = [Ball() for i in range(10)]
+    balls = [Car() for i in range(10)]
     balls = big_balls + balls
     road = Road()
 
@@ -103,6 +103,11 @@ def draw(frame_time):
     boy.draw()
     for ball in balls:
         ball.draw()
+
+    road.draw_bb()
+    boy.draw_bb()
+    for ball in balls:
+        ball.draw_bb()
 
     update_canvas()
 

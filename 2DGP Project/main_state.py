@@ -4,7 +4,7 @@ import game_framework
 
 
 from boy import Boy # import Boy class from boy.py
-from car import RedCar, Truck, GreenCar, YellowCar, BlueCar
+from car import RedCar, Truck, GreenCar, YellowCar, BlueCar, BrownCar, GrayCar
 from road import Road
 
 
@@ -17,15 +17,20 @@ trucks = None
 road = None
 
 def create_world():
-    global boy, road, red_cars, trucks, blue_cars, yellow_cars, green_cars
+    global boy, road, red_cars, trucks, blue_cars, yellow_cars, green_cars, gray_cars, brown_cars
 
     boy = Boy()
-    trucks = [Truck() for i in range(3)]
-    green_cars = [GreenCar() for i in range(3)]
-    blue_cars = [BlueCar() for i in range(4)]
+
+    brown_cars = [BrownCar() for i in range(5)]
+    gray_cars = [GrayCar() for i in range(5)]
+    trucks = [Truck() for i in range(4)]
+
+    green_cars = [GreenCar() for i in range(4)]
+    blue_cars = [BlueCar() for i in range(5)]
     yellow_cars = [YellowCar() for i in range(2)]
-    red_cars = [RedCar() for i in range(4)]
-    red_cars = red_cars + trucks + blue_cars + yellow_cars + green_cars
+    red_cars = [RedCar() for i in range(5)]
+
+    red_cars = red_cars + trucks + blue_cars + yellow_cars + green_cars + gray_cars + brown_cars
     road = Road()
 
 

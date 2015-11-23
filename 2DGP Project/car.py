@@ -12,7 +12,7 @@ class RedCar:
     image = None;
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(0, 8) * 100 + 60
+        self.x, self.y = 1000, random.randint(0, 7) * 100 + 60
         self.game_speed = 0.1
         self.car_speed = random.randint(1, 6)
         if RedCar.image == None:
@@ -24,7 +24,7 @@ class RedCar:
         self.y -= self.game_speed
         if self.y <= -40:
             self.x = 1000
-            self.y = random.randint(0, 8) * 100 + 60
+            self.y = random.randint(0, 7) * 100 + 60
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -33,7 +33,7 @@ class RedCar:
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):
-        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
+        return self.x - 85, self.y - 30, self.x + 80, self.y + 30
 
 class Truck(RedCar):
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
@@ -44,7 +44,7 @@ class Truck(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = -1000, random.randint(0, 8) * 100 + 70
+        self.x, self.y = -1000, random.randint(0, 7) * 100 + 70
         self.game_speed = 0.1
         self.car_speed = random.randint(1, 8)
         if Truck.image == None:
@@ -64,10 +64,10 @@ class Truck(RedCar):
             self.y -= self.game_speed
             if self.y <= -30:
                 self.x = -1000
-                self.y = random.randint(0, 8) * 100 + 70
+                self.y = random.randint(0, 7) * 100 + 70
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 130, self.y - 55, self.x + 130, self.y + 28
 
     def set_parent(self, brick):
         self.parent = brick
@@ -85,7 +85,7 @@ class BrownCar(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = -1000, random.randint(0, 8) * 100 + 60
+        self.x, self.y = -1000, random.randint(0, 7) * 100 + 60
         self.game_speed = 0.1
         self.car_speed = random.randint(1, 6)
         if BrownCar.image == None:
@@ -105,10 +105,10 @@ class BrownCar(RedCar):
             self.y -= self.game_speed
             if self.y <= -40:
                 self.x = -1000
-                self.y = random.randint(0, 8) * 100 + 60
+                self.y = random.randint(0, 7) * 100 + 60
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 95, self.y - 43, self.x + 95, self.y + 32
 
     def set_parent(self, brick):
         self.parent = brick
@@ -126,7 +126,7 @@ class GrayCar(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = -1000, random.randint(0, 8) * 100 + 60
+        self.x, self.y = -1000, random.randint(0, 7) * 100 + 60
         self.game_speed = 0.1
         self.car_speed = random.randint(1, 6)
         if GrayCar.image == None:
@@ -146,19 +146,10 @@ class GrayCar(RedCar):
             self.y -= self.game_speed
             if self.y <= -40:
                 self.x = -1000
-                self.y = random.randint(0, 8) * 100 + 60
+                self.y = random.randint(0, 7) * 100 + 60
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
-
-    def set_parent(self, brick):
-        self.parent = brick
-        self.rx = self.x - brick.x
-        self.ry = self.y - brick.y
-        pass
-
-    def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 82, self.y - 37, self.x + 82, self.y + 32
 
     def set_parent(self, brick):
         self.parent = brick
@@ -176,7 +167,7 @@ class BlueCar(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(0, 8) * 100 + 60
+        self.x, self.y = 1000, random.randint(0, 7) * 100 + 60
         self.game_speed = 0.1
         self.car_speed = random.randint(1, 6)
         if BlueCar.image == None:
@@ -196,7 +187,10 @@ class BlueCar(RedCar):
             self.y -= self.game_speed
             if self.y <= -40:
                 self.x = 1000
-                self.y = random.randint(0, 8) * 100 + 60
+                self.y = random.randint(0, 7) * 100 + 60
+
+    def get_bb(self):
+        return self.x - 78, self.y - 30, self.x +75, self.y + 25
 
 
 class GreenCar(RedCar):
@@ -208,7 +202,7 @@ class GreenCar(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(0, 8) * 100 + 60
+        self.x, self.y = 1000, random.randint(0, 7) * 100 + 60
         self.game_speed = 0.1
         self.car_speed = random.randint(1, 6)
         if GreenCar.image == None:
@@ -228,10 +222,10 @@ class GreenCar(RedCar):
             self.y -= self.game_speed
             if self.y <= -40:
                 self.x = 1000
-                self.y = random.randint(0, 8) * 100 + 60
+                self.y = random.randint(0, 7) * 100 + 60
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 95, self.y - 42, self.x + 90, self.y + 35
 
 
 class YellowCar(RedCar):
@@ -266,4 +260,4 @@ class YellowCar(RedCar):
                 self.y = random.randint(2, 5) * 100 + 50
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 90, self.y - 29, self.x + 83, self.y + 30

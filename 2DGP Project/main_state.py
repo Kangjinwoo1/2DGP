@@ -1,4 +1,5 @@
 from pico2d import *
+import score_state
 
 import game_framework
 
@@ -94,7 +95,11 @@ def update(frame_time):
 
     for car in red_cars:
         if collide(bombman, car):
-            red_cars.remove(car)
+            game_framework.push_state(score_state)
+
+    #for car in red_cars:
+     #   if collide(bombman, car):
+      #      red_cars.remove(car)
 
     #for car in red_cars:
      #   if collide(car, bombman):

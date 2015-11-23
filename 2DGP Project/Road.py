@@ -37,8 +37,8 @@ class Road:
         #draw_rectangle(*self.get_bb())
         pass
 
-    def get_bb(self):
-        return 0,0,799,50
+    #def get_bb(self):
+        #return 0,0,799,50
 
     #def __del__(self):
      #   del self.image

@@ -17,7 +17,7 @@ class Road:
         self.screen_width_half = 400
         self.screen_height_half = 300
         self.x, self.y1, self.y2 = self.screen_width_half, self.screen_height_half, self.screen_height_half + self.screen_height
-        self.game_speed = 0.1
+        self.game_speed = 0.2
         if Road.image == None:
             Road.image = load_image('road.png')
 

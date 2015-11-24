@@ -26,7 +26,7 @@ class Boy:
         self.total_frames = 0.0
         self.dir_x = 0
         self.dir_y = 0
-        self.game_speed = 0.1
+        self.game_speed = 0.2
         self.state = self.UP_STAND
         if Boy.image == None:
             Boy.image = load_image('boy_animation.png')

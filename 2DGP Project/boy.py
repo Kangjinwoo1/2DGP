@@ -18,7 +18,7 @@ class Boy:
 
     UP_RUN, DOWN_RUN, LEFT_RUN, RIGHT_RUN = 0, 1, 2, 3
     UP_STAND, DOWN_STAND, LEFT_STAND, RIGHT_STAND = 4, 5, 6, 7
-
+    include = None
     def __init__(self):
         self.x, self.y = 400, 180
         self.frame = random.randint(0, 1)
@@ -26,7 +26,7 @@ class Boy:
         self.total_frames = 0.0
         self.dir_x = 0
         self.dir_y = 0
-        self.game_speed = 0.2
+        self.game_speed = 0.3
         self.state = self.UP_STAND
         if Boy.image == None:
             Boy.image = load_image('boy_animation.png')
@@ -45,6 +45,7 @@ class Boy:
 
         self.x = clamp(0, self.x, 800)
         self.y = clamp(0, self.y, 600)
+        print("%f, %f" %(self.x, self.y))
 
     def eat(self, ball):
         # fill here

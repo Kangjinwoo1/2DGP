@@ -23,7 +23,7 @@ def exit():
 def update(frame_time):
     global name
     global logo_time
-    if (logo_time > 1.5):
+    if (logo_time > 0.5):
         logo_time = 0
         game_framework.push_state(title_state)
     logo_time += frame_time

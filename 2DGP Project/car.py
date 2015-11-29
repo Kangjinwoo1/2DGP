@@ -13,7 +13,11 @@ class RedCar:
     def __init__(self):
         self.x, self.y = 1000, random.randint(0, 6) * 100 + 55
         self.count = 100
+<<<<<<< HEAD
         self.game_speed = 0.2
+=======
+        self.game_speed = 0.3
+>>>>>>> origin/master
         self.car_speed = self.game_speed * random.randint(1, 4)
         if RedCar.image == None:
             RedCar.image = load_image('redcar.png')
@@ -51,7 +55,11 @@ class Truck(RedCar):
     def __init__(self):
         self.x, self.y = -200, random.randint(0, 6) * 100 + 60
         self.count = 100
+<<<<<<< HEAD
         self.game_speed = 0.2
+=======
+        self.game_speed = 0.3
+>>>>>>> origin/master
         self.car_speed = self.game_speed * random.randint(2, 6)
         if Truck.image == None:
             Truck.image = load_image('truck.png')
@@ -98,7 +106,11 @@ class BrownCar(RedCar):
     def __init__(self):
         self.x, self.y = -200, random.randint(0, 6) * 100 + 55
         self.count = 100
+<<<<<<< HEAD
         self.game_speed = 0.2
+=======
+        self.game_speed = 0.3
+>>>>>>> origin/master
         self.car_speed = self.game_speed * random.randint(1, 4)
         if BrownCar.image == None:
             BrownCar.image = load_image('browncar.png')
@@ -145,7 +157,11 @@ class GrayCar(RedCar):
     def __init__(self):
         self.x, self.y = -200, random.randint(0, 6) * 100 + 52
         self.count = 100
+<<<<<<< HEAD
         self.game_speed = 0.2
+=======
+        self.game_speed = 0.3
+>>>>>>> origin/master
         self.car_speed = self.game_speed * random.randint(1, 4)
         if GrayCar.image == None:
             GrayCar.image = load_image('graycar.png')
@@ -192,7 +208,11 @@ class BlueCar(RedCar):
     def __init__(self):
         self.x, self.y = 1000, random.randint(0, 6) * 100 + 55
         self.count = 100
+<<<<<<< HEAD
         self.game_speed = 0.2
+=======
+        self.game_speed = 0.3
+>>>>>>> origin/master
         self.car_speed = self.game_speed * random.randint(1, 4)
         if BlueCar.image == None:
             BlueCar.image = load_image('bluecar.png')
@@ -233,7 +253,11 @@ class GreenCar(RedCar):
     def __init__(self):
         self.x, self.y = 1000, random.randint(0, 6) * 100 + 55
         self.count = 100
+<<<<<<< HEAD
         self.game_speed = 0.2
+=======
+        self.game_speed = 0.3
+>>>>>>> origin/master
         self.car_speed = self.game_speed * random.randint(1, 4)
         if GreenCar.image == None:
             GreenCar.image = load_image('greencar.png')
@@ -274,7 +298,11 @@ class YellowCar(RedCar):
     def __init__(self):
         self.x, self.y = 1000, random.randint(2, 8) * 100 + 50
         self.count = 100
+<<<<<<< HEAD
         self.game_speed = 0.2
+=======
+        self.game_speed = 0.3
+>>>>>>> origin/master
         self.car_speed = self.game_speed * 12
         if YellowCar.image == None:
             YellowCar.image = load_image('yellowcar.png')

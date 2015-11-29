@@ -23,6 +23,7 @@ def create_world():
 
     bombman = Boy()
 
+<<<<<<< HEAD
     brown_cars = [BrownCar() for i in range(4)]
     gray_cars = [GrayCar() for i in range(3)]
     trucks = [Truck() for i in range(3)]
@@ -31,6 +32,16 @@ def create_world():
     blue_cars = [BlueCar() for i in range(3)]
     yellow_cars = [YellowCar() for i in range(2)]
     red_cars = [RedCar() for i in range(4)]
+=======
+    brown_cars = [BrownCar() for i in range(3)]
+    gray_cars = [GrayCar() for i in range(2)]
+    trucks = [Truck() for i in range(2)]
+
+    green_cars = [GreenCar() for i in range(2)]
+    blue_cars = [BlueCar() for i in range(2)]
+    yellow_cars = [YellowCar() for i in range(1)]
+    red_cars = [RedCar() for i in range(3)]
+>>>>>>> origin/master
 
     red_cars = red_cars + trucks + blue_cars + yellow_cars + green_cars + gray_cars + brown_cars
     crossyroad = Road()

@@ -12,11 +12,8 @@ class Sidewalk:
 
     def __init__(self):
         self.x, self.y = 400, random.randint(1, 2) * 100 + 50
-<<<<<<< HEAD
         self.game_speed = 0.2
-=======
         self.game_speed = 0.3
->>>>>>> origin/master
         if Sidewalk.image == None:
             Sidewalk.image = load_image('sidewalk.png')
 

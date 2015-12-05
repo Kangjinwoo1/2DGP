@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "mygame.py", line 12, in <module>
+  File "C:\2DGP\kjw\game_framework.py", line 98, in run
+    stack[-1].exit()
+  File "C:\2DGP\kjw\main_state.py", line 66, in exit
+    destroy_world()
+  File "C:\2DGP\kjw\main_state.py", line 53, in destroy_world
+    del(crossyroad)
+UnboundLocalError: local variable 'crossyroad' referenced before assignment
+Traceback (most recent call last):
+  File "mygame.py", line 12, in <module>
+  File "C:\2DGP\kjw\game_framework.py", line 98, in run
+    stack[-1].exit()
+  File "C:\2DGP\kjw\main_state.py", line 66, in exit
+    destroy_world()
+  File "C:\2DGP\kjw\main_state.py", line 53, in destroy_world
+    del(crossyroad)
+UnboundLocalError: local variable 'crossyroad' referenced before assignment

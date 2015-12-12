@@ -3,34 +3,34 @@ import random
 from pico2d import *
 
 class RedCar:
-    PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
-    RED_CAR_SPEED_KMPH = 60.0                    # Km / Hour
+    PIXEL_PER_METER = (10.0 / 0.3)              # 10 pixel 30 cm
+    RED_CAR_SPEED_KMPH = 60.0                   # Km / Hour
     RED_CAR_SPEED_MPM = (RED_CAR_SPEED_KMPH * 1000.0 / 60.0)
     RED_CAR_SPEED_MPS = (RED_CAR_SPEED_MPM / 60.0)
     RED_CAR_SPEED_PPS = (RED_CAR_SPEED_MPS * PIXEL_PER_METER)
     image = None;
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(0, 6) * 100 + 55
-        self.count = 100
-        self.game_speed = 0.2
+        self.x, self.y = 1000, 500 + 55
+        self.distance_x = self.x
+        self.distance_y = self.y
+        self.count = 600
         self.game_speed = 0.3
-        self.car_speed = self.game_speed * random.randint(1, 4)
+        self.car_speed = 0.15
         if RedCar.image == None:
             RedCar.image = load_image('redcar.png')
 
     def update(self, frame_time):
         distance = RedCar.RED_CAR_SPEED_PPS * frame_time
-        self.x -= distance * (self.game_speed * self.car_speed)
+        self.x -= distance * self.car_speed
         self.y -= self.game_speed
         self.count -= self.game_speed
-        if self.count <= 0:
-            self.count = 100
         if self.x <= -200:
-            if self.count == 100:
-                self.x = 1000
-                self.y = random.randint(1, 6) * 100 + 55
-                self.car_speed = self.game_speed * random.randint(1, 4)
+            self.x += 2000
+        if self.count <= 0:
+            self.count = 600
+        if self.count == 600:
+            self.y -= self.y - self.distance_y
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -39,22 +39,23 @@ class RedCar:
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):
-        return self.x - 85, self.y - 30, self.x + 80, self.y + 30
+        return self.x - 80, self.y - 25, self.x + 75, self.y + 25
 
 class Truck(RedCar):
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
-    TRUCK_SPEED_KMPH = 70.0                    # Km / Hour
+    TRUCK_SPEED_KMPH = 60.0                    # Km / Hour
     TRUCK_SPEED_MPM = (TRUCK_SPEED_KMPH * 1000.0 / 60.0)
     TRUCK_SPEED_MPS = (TRUCK_SPEED_MPM / 60.0)
     TRUCK_SPEED_PPS = (TRUCK_SPEED_MPS * PIXEL_PER_METER)
     image = None
 
     def __init__(self):
-        self.x, self.y = -200, random.randint(0, 6) * 100 + 60
-        self.count = 100
-        self.game_speed = 0.2
+        self.x, self.y = -200, 0 + 60
+        self.distance_x = self.x
+        self.distance_y = self.y
+        self.count = 600
         self.game_speed = 0.3
-        self.car_speed = self.game_speed * random.randint(2, 6)
+        self.car_speed = 0.3
         if Truck.image == None:
             Truck.image = load_image('truck.png')
         self.parent = None
@@ -68,19 +69,18 @@ class Truck(RedCar):
             self.y = self.parent.y + self.ry
         else:
             distance = Truck.TRUCK_SPEED_PPS * frame_time
-            self.x += distance * (self.game_speed * self.car_speed)
+            self.x += distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
-            if self.count <= 0:
-                self.count = 100
             if self.x >= 1000:
-                if self.count == 100:
-                    self.x = -200
-                    self.y = random.randint(1, 6) * 100 + 60
-                    self.car_speed = self.game_speed * random.randint(2, 6)
+                self.x -= 2000
+            if self.count <= 0:
+                self.count = 600
+            if self.count == 600:
+                self.y -= self.y - self.distance_y
 
     def get_bb(self):
-        return self.x - 120, self.y - 48, self.x + 125, self.y + 30
+        return self.x - 115, self.y - 40, self.x + 115, self.y + 27
 
     def set_parent(self, brick):
         self.parent = brick
@@ -98,11 +98,13 @@ class BrownCar(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = -200, random.randint(0, 6) * 100 + 55
-        self.count = 100
-        self.game_speed = 0.2
+        self.x = -200
+        self.y = 300 + 55
+        self.distance_x = self.x
+        self.distance_y = self.y
+        self.count = 600
         self.game_speed = 0.3
-        self.car_speed = self.game_speed * random.randint(1, 4)
+        self.car_speed = 0.2
         if BrownCar.image == None:
             BrownCar.image = load_image('browncar.png')
         self.parent = None
@@ -116,19 +118,19 @@ class BrownCar(RedCar):
             self.y = self.parent.y + self.ry
         else:
             distance = BrownCar.BROWN_CAR_SPEED_PPS * frame_time
-            self.x += distance * (self.game_speed * self.car_speed)
+            self.x += distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
-            if self.count <= 0:
-                self.count = 100
             if self.x >= 1000:
-                if self.count == 100:
-                    self.x = -200
-                    self.y = random.randint(1, 6) * 100 + 55
-                    self.car_speed = self.game_speed * random.randint(1, 4)
+                self.x -= 2000
+            if self.count <= 0:
+                self.count = 600
+            if self.count == 600:
+                self.y -= self.y - self.distance_y
+           # print("%d\n" % self.x)
 
     def get_bb(self):
-        return self.x - 95, self.y - 43, self.x + 95, self.y + 32
+        return self.x - 90, self.y - 33, self.x + 90, self.y + 27
 
     def set_parent(self, brick):
         self.parent = brick
@@ -146,11 +148,12 @@ class GrayCar(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = -200, random.randint(0, 6) * 100 + 52
-        self.count = 100
-        self.game_speed = 0.2
+        self.x, self.y = -200, 100 + 52
+        self.distance_x = self.x
+        self.distance_y = self.y
+        self.count = 600
         self.game_speed = 0.3
-        self.car_speed = self.game_speed * random.randint(1, 4)
+        self.car_speed = 0.15
         if GrayCar.image == None:
             GrayCar.image = load_image('graycar.png')
         self.parent = None
@@ -164,19 +167,18 @@ class GrayCar(RedCar):
             self.y = self.parent.y + self.ry
         else:
             distance = GrayCar.GRAY_CAR_SPEED_PPS * frame_time
-            self.x += distance * (self.game_speed * self.car_speed)
+            self.x += distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
-            if self.count <= 0:
-                self.count = 100
             if self.x >= 1000:
-                if self.count == 100:
-                    self.x = -200
-                    self.y = random.randint(1, 6) * 100 + 52
-                    self.car_speed = self.game_speed * random.randint(1, 4)
+                self.x -= 2000
+            if self.count <= 0:
+                self.count = 600
+            if self.count == 600:
+                self.y -= self.y - self.distance_y
 
     def get_bb(self):
-        return self.x - 82, self.y - 37, self.x + 82, self.y + 32
+        return self.x - 77, self.y - 27, self.x + 77, self.y + 27
 
     def set_parent(self, brick):
         self.parent = brick
@@ -187,18 +189,19 @@ class GrayCar(RedCar):
 
 class BlueCar(RedCar):
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
-    BLUE_CAR_SPEED_KMPH = 50.0                    # Km / Hour
+    BLUE_CAR_SPEED_KMPH = 60.0                    # Km / Hour
     BLUE_CAR_SPEED_MPM = (BLUE_CAR_SPEED_KMPH * 1000.0 / 60.0)
     BLUE_CAR_SPEED_MPS = (BLUE_CAR_SPEED_MPM / 60.0)
     BLUE_CAR_SPEED_PPS = (BLUE_CAR_SPEED_MPS * PIXEL_PER_METER)
     image = None
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(0, 6) * 100 + 55
-        self.count = 100
-        self.game_speed = 0.2
+        self.x, self.y = 1000, 400 + 55
+        self.distance_x = self.x
+        self.distance_y = self.y
+        self.count = 600
         self.game_speed = 0.3
-        self.car_speed = self.game_speed * random.randint(1, 4)
+        self.car_speed = 0.2
         if BlueCar.image == None:
             BlueCar.image = load_image('bluecar.png')
         self.parent = None
@@ -212,35 +215,35 @@ class BlueCar(RedCar):
             self.y = self.parent.y + self.ry
         else:
             distance = BlueCar.BLUE_CAR_SPEED_PPS * frame_time
-            self.x -= distance * (self.game_speed * self.car_speed)
+            self.x -= distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
-        if self.count <= 0:
-            self.count = 100
         if self.x <= -200:
-            if self.count == 100:
-                self.x = 1000
-                self.y = random.randint(1, 6) * 100 + 55
-                self.car_speed = self.game_speed * random.randint(1, 4)
+            self.x += 2000
+        if self.count <= 0:
+            self.count = 600
+        if self.count == 600:
+            self.y -= self.y - self.distance_y
 
     def get_bb(self):
-        return self.x - 78, self.y - 30, self.x +75, self.y + 25
+        return self.x - 73, self.y - 25, self.x + 70, self.y + 20
 
 
 class GreenCar(RedCar):
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
-    GREEN_CAR_SPEED_KMPH = 40.0                    # Km / Hour
+    GREEN_CAR_SPEED_KMPH = 60.0                    # Km / Hour
     GREEN_CAR_SPEED_MPM = (GREEN_CAR_SPEED_KMPH * 1000.0 / 60.0)
     GREEN_CAR_SPEED_MPS = (GREEN_CAR_SPEED_MPM / 60.0)
     GREEN_CAR_SPEED_PPS = (GREEN_CAR_SPEED_MPS * PIXEL_PER_METER)
     image = None
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(0, 6) * 100 + 55
-        self.count = 100
-        self.game_speed = 0.2
+        self.x, self.y = 1000, 200 + 55
+        self.distance_x = self.x
+        self.distance_y = self.y
+        self.count = 600
         self.game_speed = 0.3
-        self.car_speed = self.game_speed * random.randint(1, 4)
+        self.car_speed = 0.25
         if GreenCar.image == None:
             GreenCar.image = load_image('greencar.png')
         self.parent = None
@@ -254,23 +257,22 @@ class GreenCar(RedCar):
             self.y = self.parent.y + self.ry
         else:
             distance = GreenCar.GREEN_CAR_SPEED_PPS * frame_time
-            self.x -= distance * (self.game_speed * self.car_speed)
+            self.x -= distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
-        if self.count <= 0:
-            self.count = 100
         if self.x <= -200:
-            if self.count == 100:
-                self.x = 1000
-                self.y = random.randint(1, 6) * 100 + 55
-                self.car_speed = self.game_speed * random.randint(1, 4)
+            self.x += 2000
+        if self.count <= 0:
+            self.count = 600
+        if self.count == 600:
+            self.y -= self.y - self.distance_y
 
     def get_bb(self):
-        return self.x - 95, self.y - 42, self.x + 90, self.y + 35
+        return self.x - 90, self.y - 32, self.x + 85, self.y + 30
 
 
 class YellowCar(RedCar):
-    PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
+    PIXEL_PER_METER = (10.0 / 0.3)                   # 10 pixel 30 cm
     YELLOW_CAR_SPEED_KMPH = 100.0                    # Km / Hour
     YELLOW_CAR_SPEED_MPM = (YELLOW_CAR_SPEED_KMPH * 1000.0 / 60.0)
     YELLOW_CAR_SPEED_MPS = (YELLOW_CAR_SPEED_MPM / 60.0)
@@ -278,11 +280,10 @@ class YellowCar(RedCar):
     image = None
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(2, 8) * 100 + 50
+        self.x, self.y = 1000, random.randint(2, 18) * 100 + 50
         self.count = 100
-        self.game_speed = 0.2
         self.game_speed = 0.3
-        self.car_speed = self.game_speed * 12
+        self.car_speed = 0.9
         if YellowCar.image == None:
             YellowCar.image = load_image('yellowcar.png')
         self.parent = None
@@ -296,7 +297,7 @@ class YellowCar(RedCar):
             self.y = self.parent.y + self.ry
         else:
             distance = YellowCar.YELLOW_CAR_SPEED_PPS * frame_time
-            self.x -= distance * (self.game_speed * self.car_speed)
+            self.x -= distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
         if self.count <= 0:
@@ -304,8 +305,8 @@ class YellowCar(RedCar):
         if self.x <= -200:
             if self.count == 100:
                 self.x = 1000
-                self.y = random.randint(2, 8) * 100 + 50
-                self.car_speed = self.game_speed * 12
+                self.y = random.randint(2, 18) * 100 + 50
+                self.car_speed = 2
 
     def get_bb(self):
         return self.x - 90, self.y - 29, self.x + 83, self.y + 30

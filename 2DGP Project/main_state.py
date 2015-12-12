@@ -8,8 +8,6 @@ from boy import Boy # import Boy class from boy.py
 from car import RedCar, Truck, GreenCar, YellowCar, BlueCar, BrownCar, GrayCar
 from road import Road
 
-
-
 name = "main_state"
 
 bombman = None
@@ -19,26 +17,89 @@ crossyroad = None
 sidewalk = None
 
 def create_world():
-    global bombman, crossyroad, red_cars, trucks, blue_cars, yellow_cars, green_cars, gray_cars, brown_cars, sidewalk
+    global bombman, crossyroad, red_cars, trucks, blue_cars, yellow_cars, green_cars, gray_cars, brown_cars, sidewalk, i
 
     bombman = Boy()
 
-    brown_cars = [BrownCar() for i in range(4)]
-    gray_cars = [GrayCar() for i in range(3)]
-    trucks = [Truck() for i in range(3)]
+    brown_cars = [BrownCar() for i in range(10)]
+    for i in range(10):
+        if i <= 4:
+            brown_cars[i].x = i * (-400) + 400
+            brown_cars[i].y = 300 + 55
+            brown_cars[i].distance_x = brown_cars[i].x
+            brown_cars[i].distance_y = brown_cars[i].y
+        else:
+            brown_cars[i].x = (i - 5) * (-400) + 400
+            brown_cars[i].y = 900 + 55
+            brown_cars[i].distance_x = brown_cars[i].x
+            brown_cars[i].distance_y = brown_cars[i].y
 
-    green_cars = [GreenCar() for i in range(3)]
-    blue_cars = [BlueCar() for i in range(3)]
-    yellow_cars = [YellowCar() for i in range(2)]
-    red_cars = [RedCar() for i in range(4)]
-    brown_cars = [BrownCar() for i in range(3)]
-    gray_cars = [GrayCar() for i in range(2)]
-    trucks = [Truck() for i in range(2)]
+    gray_cars = [GrayCar() for i in range(10)]
+    for i in range(10):
+        if i <= 4:
+            gray_cars[i].x = i * (-400) + 400
+            gray_cars[i].y = 100 + 52
+            gray_cars[i].distance_x = gray_cars[i].x
+            gray_cars[i].distance_y = gray_cars[i].y
+        else:
+            gray_cars[i].x = (i - 5) * (-400) + 400
+            gray_cars[i].y = 700 + 55
+            gray_cars[i].distance_x = gray_cars[i].x
+            gray_cars[i].distance_y = gray_cars[i].y
 
-    green_cars = [GreenCar() for i in range(2)]
-    blue_cars = [BlueCar() for i in range(2)]
+    trucks = [Truck() for i in range(10)]
+    for i in range(10):
+        if i <= 4:
+            trucks[i].x = i * (-400) + 400
+            trucks[i].y = 0 + 60
+            trucks[i].distance_x = trucks[i].x
+            trucks[i].distance_y = trucks[i].y
+        else:
+            trucks[i].x = (i - 5) * (-400) + 400
+            trucks[i].y = 600 + 60
+            trucks[i].distance_x = trucks[i].x
+            trucks[i].distance_y = trucks[i].y
+
+    green_cars = [GreenCar() for i in range(10)]
+    for i in range(10):
+        if i <= 4:
+            green_cars[i].x = i * 400 + 400
+            green_cars[i].y = 200 + 55
+            green_cars[i].distance_x = green_cars[i].x
+            green_cars[i].distance_y = green_cars[i].y
+        else:
+            green_cars[i].x = (i - 5) * 400 + 400
+            green_cars[i].y = 800 + 55
+            green_cars[i].distance_x = green_cars[i].x
+            green_cars[i].distance_y = green_cars[i].y
+
+    blue_cars = [BlueCar() for i in range(10)]
+    for i in range(10):
+        if i <= 4:
+            blue_cars[i].x = i * 400 + 400
+            blue_cars[i].y = 400 + 55
+            blue_cars[i].distance_x = blue_cars[i].x
+            blue_cars[i].distance_y = blue_cars[i].y
+        else:
+            blue_cars[i].x = (i - 5) * 400 + 400
+            blue_cars[i].y = 1000 + 55
+            blue_cars[i].distance_x = blue_cars[i].x
+            blue_cars[i].distance_y = blue_cars[i].y
+
+    red_cars = [RedCar() for i in range(10)]
+    for i in range(10):
+        if i <= 4:
+            red_cars[i].x = i * 400 + 400
+            red_cars[i].y = 500 + 55
+            red_cars[i].distance_x = red_cars[i].x
+            red_cars[i].distance_y = red_cars[i].y
+        else:
+            red_cars[i].x = (i - 5) * 400 + 400
+            red_cars[i].y = 1100 + 55
+            red_cars[i].distance_x = red_cars[i].x
+            red_cars[i].distance_y = red_cars[i].y
+
     yellow_cars = [YellowCar() for i in range(1)]
-    red_cars = [RedCar() for i in range(3)]
 
     red_cars = red_cars + trucks + blue_cars + yellow_cars + green_cars + gray_cars + brown_cars
     crossyroad = Road()
@@ -46,12 +107,12 @@ def create_world():
 
 
 def destroy_world():
-    global bombman, red_cars, road, sidewalk
+    global bombman, red_cars, crossyroad, sidewalk
 
-    del(bombman)
-    del(red_cars)
-    del(crossyroad)
-    del(sidewalk)
+    #del(bombman)
+    #del(red_cars)
+    #del(crossyroad)
+    #del(sidewalk)
 
 
 
@@ -63,7 +124,7 @@ def enter():
 
 
 def exit():
-    destroy_world()
+    #destroy_world()
     close_canvas()
 
 
@@ -109,8 +170,9 @@ def include(a, b):
 
 
 def update(frame_time):
-    global rocation
-    rocation = 0
+    global location
+    global brown_cars
+    location = 0
 
     crossyroad.update(frame_time)
     bombman.update(frame_time)
@@ -125,15 +187,17 @@ def update(frame_time):
     for car in red_cars:
         car.update(frame_time)
 
-    for side in sidewalk:
-        if include(bombman, side):
-            rocation = 1
-            print("include")
-
-    for car in red_cars:
-        if collide(bombman, car) and rocation == 0:
-            print("collide")
-            game_framework.push_state(score_state)
+    for i in range(6):
+        print("b_cars[%d] : %d" % (i, blue_cars[i].x))
+    # for side in sidewalk:
+    #     if include(bombman, side):
+    #         location = 1
+    #         print("include")
+    #
+    # for car in red_cars:
+    #     if collide(bombman, car) and location == 0:
+    #         print("collide")
+    #         game_framework.push_state(score_state)
     #if include(bombman, side):
      #   print("include")
 

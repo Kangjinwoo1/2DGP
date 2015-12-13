@@ -46,7 +46,7 @@ class Boy:
         self.x = clamp(0, self.x, 800)
         self.y = clamp(0, self.y, 600)
         self.time_count += self.game_speed
-        if self.time_count >= 1200:
+        if self.time_count >= 600:
             self.game_speed += 0.01
             self.time_count = 0
         print("%f, %f" %(self.x, self.y))

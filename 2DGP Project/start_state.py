@@ -25,7 +25,7 @@ def update(frame_time):
     global logo_time
     if (logo_time > 0.5):
         logo_time = 0
-        game_framework.push_state(title_state)
+        game_framework.run(title_state)
     logo_time += frame_time
 
 def draw(frame_time):

@@ -1,14 +1,14 @@
 import game_framework
+
 from pico2d import *
 import start_state
 import title_state
-import main_state
+
 
 
 name = "StartState"
 image = None
 logo_time = 0.0
-
 
 def enter():
     global image
@@ -25,9 +25,10 @@ def update(frame_time):
 
 
 def draw(frame_time):
-    global image
+    global image, score
     clear_canvas()
     image.draw(400, 300)
+    #debug_print('Score = %d' % score)
     update_canvas()
 
 
@@ -40,7 +41,7 @@ def handle_events(frame_time):
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif(event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.run(main_state)
+                game_framework.run(title_state)
     pass
 
 

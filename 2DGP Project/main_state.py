@@ -194,7 +194,7 @@ def update(frame_time):
     for car in red_cars:
         if collide(bombman, car) and location == 0:
             #print("collide")
-            game_framework.push_state(score_state)
+            game_framework.run(score_state)
 
 
 def draw(frame_time):
@@ -214,6 +214,7 @@ def draw(frame_time):
 
     bombman.draw_bb()
     bombman.draw()
+    debug_print('Score = %d' % crossyroad.score)
 
     update_canvas()
 

@@ -27,7 +27,7 @@ class RedCar:
         self.y -= self.game_speed
         self.count -= self.game_speed
         self.time_count += self.game_speed
-        if self.time_count >= 1200:
+        if self.time_count >= 600:
             self.game_speed += 0.01
             self.time_count = 0
         if self.x <= -200:
@@ -79,7 +79,7 @@ class Truck(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 1200:
+            if self.time_count >= 600:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x >= 1000:
@@ -133,7 +133,7 @@ class BrownCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 1200:
+            if self.time_count >= 600:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x >= 1000:
@@ -186,7 +186,7 @@ class GrayCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 1200:
+            if self.time_count >= 600:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x >= 1000:
@@ -239,7 +239,7 @@ class BlueCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 1200:
+            if self.time_count >= 600:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x <= -200:
@@ -286,7 +286,7 @@ class GreenCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 1200:
+            if self.time_count >= 600:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x <= -200:

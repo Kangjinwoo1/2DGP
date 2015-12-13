@@ -19,6 +19,7 @@ class Road:
         self.x, self.y1, self.y2 = self.screen_width_half, self.screen_height_half, self.screen_height_half + self.screen_height
         self.time_count = 0
         self.game_speed = 0.3
+        self.score = 0
         if Road.image == None:
             Road.image = load_image('road.png')
 
@@ -26,7 +27,8 @@ class Road:
         self.y1 -= self.game_speed
         self.y2 -= self.game_speed
         self.time_count += self.game_speed
-        if self.time_count >= 1200:
+        self.score += 0.1 * self.game_speed
+        if self.time_count >= 600:
             self.game_speed += 0.01
             self.time_count = 0
         if self.y1 <= -self.screen_height_half:

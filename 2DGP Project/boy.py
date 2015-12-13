@@ -26,8 +26,8 @@ class Boy:
         self.total_frames = 0.0
         self.dir_x = 0
         self.dir_y = 0
-        self.game_speed = 0.2
         self.game_speed = 0.3
+        self.time_count = 0
         self.state = self.UP_STAND
         if Boy.image == None:
             Boy.image = load_image('boy_animation.png')
@@ -43,9 +43,12 @@ class Boy:
         self.frame = int(self.total_frames) % 2
         self.x += (self.dir_x * distance)
         self.y += (self.dir_y * distance) - self.game_speed
-
         self.x = clamp(0, self.x, 800)
         self.y = clamp(0, self.y, 600)
+        self.time_count += self.game_speed
+        if self.time_count >= 1200:
+            self.game_speed += 0.01
+            self.time_count = 0
         print("%f, %f" %(self.x, self.y))
 
     def eat(self, ball):

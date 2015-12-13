@@ -15,8 +15,9 @@ class RedCar:
         self.distance_x = self.x
         self.distance_y = self.y
         self.count = 600
+        self.time_count = 0
         self.game_speed = 0.3
-        self.car_speed = 0.15
+        self.car_speed = 0.175
         if RedCar.image == None:
             RedCar.image = load_image('redcar.png')
 
@@ -25,6 +26,10 @@ class RedCar:
         self.x -= distance * self.car_speed
         self.y -= self.game_speed
         self.count -= self.game_speed
+        self.time_count += self.game_speed
+        if self.time_count >= 1200:
+            self.game_speed += 0.01
+            self.time_count = 0
         if self.x <= -200:
             self.x += 2000
         if self.count <= 0:
@@ -54,6 +59,7 @@ class Truck(RedCar):
         self.distance_x = self.x
         self.distance_y = self.y
         self.count = 600
+        self.time_count = 0
         self.game_speed = 0.3
         self.car_speed = 0.3
         if Truck.image == None:
@@ -72,6 +78,10 @@ class Truck(RedCar):
             self.x += distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
+            self.time_count += self.game_speed
+            if self.time_count >= 1200:
+                self.game_speed += 0.01
+                self.time_count = 0
             if self.x >= 1000:
                 self.x -= 2000
             if self.count <= 0:
@@ -103,8 +113,9 @@ class BrownCar(RedCar):
         self.distance_x = self.x
         self.distance_y = self.y
         self.count = 600
+        self.time_count = 0
         self.game_speed = 0.3
-        self.car_speed = 0.2
+        self.car_speed = 0.225
         if BrownCar.image == None:
             BrownCar.image = load_image('browncar.png')
         self.parent = None
@@ -121,13 +132,16 @@ class BrownCar(RedCar):
             self.x += distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
+            self.time_count += self.game_speed
+            if self.time_count >= 1200:
+                self.game_speed += 0.01
+                self.time_count = 0
             if self.x >= 1000:
                 self.x -= 2000
             if self.count <= 0:
                 self.count = 600
             if self.count == 600:
                 self.y -= self.y - self.distance_y
-           # print("%d\n" % self.x)
 
     def get_bb(self):
         return self.x - 90, self.y - 33, self.x + 90, self.y + 27
@@ -152,8 +166,9 @@ class GrayCar(RedCar):
         self.distance_x = self.x
         self.distance_y = self.y
         self.count = 600
+        self.time_count = 0
         self.game_speed = 0.3
-        self.car_speed = 0.15
+        self.car_speed = 0.165
         if GrayCar.image == None:
             GrayCar.image = load_image('graycar.png')
         self.parent = None
@@ -170,6 +185,10 @@ class GrayCar(RedCar):
             self.x += distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
+            self.time_count += self.game_speed
+            if self.time_count >= 1200:
+                self.game_speed += 0.01
+                self.time_count = 0
             if self.x >= 1000:
                 self.x -= 2000
             if self.count <= 0:
@@ -200,8 +219,9 @@ class BlueCar(RedCar):
         self.distance_x = self.x
         self.distance_y = self.y
         self.count = 600
+        self.time_count = 0
         self.game_speed = 0.3
-        self.car_speed = 0.2
+        self.car_speed = 0.225
         if BlueCar.image == None:
             BlueCar.image = load_image('bluecar.png')
         self.parent = None
@@ -218,12 +238,16 @@ class BlueCar(RedCar):
             self.x -= distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
-        if self.x <= -200:
-            self.x += 2000
-        if self.count <= 0:
-            self.count = 600
-        if self.count == 600:
-            self.y -= self.y - self.distance_y
+            self.time_count += self.game_speed
+            if self.time_count >= 1200:
+                self.game_speed += 0.01
+                self.time_count = 0
+            if self.x <= -200:
+                self.x += 2000
+            if self.count <= 0:
+                self.count = 600
+            if self.count == 600:
+                self.y -= self.y - self.distance_y
 
     def get_bb(self):
         return self.x - 73, self.y - 25, self.x + 70, self.y + 20
@@ -242,6 +266,7 @@ class GreenCar(RedCar):
         self.distance_x = self.x
         self.distance_y = self.y
         self.count = 600
+        self.time_count = 0
         self.game_speed = 0.3
         self.car_speed = 0.25
         if GreenCar.image == None:
@@ -260,17 +285,21 @@ class GreenCar(RedCar):
             self.x -= distance * self.car_speed
             self.y -= self.game_speed
             self.count -= self.game_speed
-        if self.x <= -200:
-            self.x += 2000
-        if self.count <= 0:
-            self.count = 600
-        if self.count == 600:
-            self.y -= self.y - self.distance_y
+            self.time_count += self.game_speed
+            if self.time_count >= 1200:
+                self.game_speed += 0.01
+                self.time_count = 0
+            if self.x <= -200:
+                self.x += 2000
+            if self.count <= 0:
+                self.count = 600
+            if self.count == 600:
+                self.y -= self.y - self.distance_y
 
     def get_bb(self):
         return self.x - 90, self.y - 32, self.x + 85, self.y + 30
 
-
+########################################################################
 class YellowCar(RedCar):
     PIXEL_PER_METER = (10.0 / 0.3)                   # 10 pixel 30 cm
     YELLOW_CAR_SPEED_KMPH = 100.0                    # Km / Hour

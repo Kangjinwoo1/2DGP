@@ -17,7 +17,7 @@ class Road:
         self.screen_width_half = 400
         self.screen_height_half = 300
         self.x, self.y1, self.y2 = self.screen_width_half, self.screen_height_half, self.screen_height_half + self.screen_height
-        self.game_speed = 0.2
+        self.time_count = 0
         self.game_speed = 0.3
         if Road.image == None:
             Road.image = load_image('road.png')
@@ -25,6 +25,10 @@ class Road:
     def update(self, frame_time):
         self.y1 -= self.game_speed
         self.y2 -= self.game_speed
+        self.time_count += self.game_speed
+        if self.time_count >= 1200:
+            self.game_speed += 0.01
+            self.time_count = 0
         if self.y1 <= -self.screen_height_half:
             self.y1 = self.screen_height_half + self.screen_height
         if self.y2 <= -self.screen_height_half:

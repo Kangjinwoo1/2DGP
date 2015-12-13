@@ -5,7 +5,7 @@ import game_framework
 
 from sidewalk import Sidewalk
 from boy import Boy # import Boy class from boy.py
-from car import RedCar, Truck, GreenCar, YellowCar, BlueCar, BrownCar, GrayCar
+from car import RedCar, Truck, GreenCar, BlueCar, BrownCar, GrayCar     #YellowCar
 from road import Road
 
 name = "main_state"
@@ -17,7 +17,7 @@ crossyroad = None
 sidewalk = None
 
 def create_world():
-    global bombman, crossyroad, red_cars, trucks, blue_cars, yellow_cars, green_cars, gray_cars, brown_cars, sidewalk, i
+    global bombman, crossyroad, red_cars, trucks, blue_cars, green_cars, gray_cars, brown_cars, sidewalk       #yellow_cars
 
     bombman = Boy()
 
@@ -99,9 +99,9 @@ def create_world():
             red_cars[i].distance_x = red_cars[i].x
             red_cars[i].distance_y = red_cars[i].y
 
-    yellow_cars = [YellowCar() for i in range(1)]
+    #yellow_cars = [YellowCar() for i in range(1)]
 
-    red_cars = red_cars + trucks + blue_cars + yellow_cars + green_cars + gray_cars + brown_cars
+    red_cars = red_cars + trucks + blue_cars + green_cars + gray_cars + brown_cars       #yellow_cars
     crossyroad = Road()
     sidewalk = [Sidewalk() for i in range(3)]
 
@@ -113,7 +113,6 @@ def destroy_world():
     #del(red_cars)
     #del(crossyroad)
     #del(sidewalk)
-
 
 
 def enter():
@@ -134,7 +133,6 @@ def pause():
 
 def resume():
     pass
-
 
 def handle_events(frame_time):
     events = get_events()
@@ -171,8 +169,9 @@ def include(a, b):
 
 def update(frame_time):
     global location
-    global brown_cars
     location = 0
+
+    print("%f" % crossyroad.game_speed)
 
     crossyroad.update(frame_time)
     bombman.update(frame_time)
@@ -187,36 +186,15 @@ def update(frame_time):
     for car in red_cars:
         car.update(frame_time)
 
-    for i in range(6):
-        print("b_cars[%d] : %d" % (i, blue_cars[i].x))
-    # for side in sidewalk:
-    #     if include(bombman, side):
-    #         location = 1
-    #         print("include")
-    #
-    # for car in red_cars:
-    #     if collide(bombman, car) and location == 0:
-    #         print("collide")
-    #         game_framework.push_state(score_state)
-    #if include(bombman, side):
-     #   print("include")
+    for side in sidewalk:
+        if include(bombman, side):
+            location = 1
+            print("include")
 
-    #if collision_state == False:
-     #   for car in red_cars:
-      #      if collide(bombman, car):
-       #         red_cars.remove(car)
-
-    #for car in red_cars:
-        #if collide(bombman, car):
-            #game_framework.push_state(score_state)
-
-    #for car in red_cars:
-     #   if collide(car, bombman):
-      #      red_cars.stop(car) ?????????????????????????????
-
-    #for car in trucks:
-     #   if collide(road, car):
-      #      car.stop()
+    for car in red_cars:
+        if collide(bombman, car) and location == 0:
+            #print("collide")
+            game_framework.push_state(score_state)
 
 
 def draw(frame_time):

@@ -2,6 +2,9 @@ import random
 
 from pico2d import *
 
+game_speed = 0.4
+difficulty = 300
+
 class Road:
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
     SCROLL_SPEED_KMPH = 20.0                    # Km / Hour
@@ -18,7 +21,7 @@ class Road:
         self.screen_height_half = 300
         self.x, self.y1, self.y2 = self.screen_width_half, self.screen_height_half, self.screen_height_half + self.screen_height
         self.time_count = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.score = 0
         if Road.image == None:
             Road.image = load_image('road.png')
@@ -28,7 +31,7 @@ class Road:
         self.y2 -= self.game_speed
         self.time_count += self.game_speed
         self.score += 0.1 * self.game_speed
-        if self.time_count >= 600:
+        if self.time_count >= difficulty:
             self.game_speed += 0.01
             self.time_count = 0
         if self.y1 <= -self.screen_height_half:

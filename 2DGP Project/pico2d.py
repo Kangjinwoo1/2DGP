@@ -151,7 +151,7 @@ def print_fps():
 def debug_print(str):
     global canvas_height
     global debug_font
-    debug_font.draw(0, canvas_height - 10, str, (0,255,0))
+    debug_font.draw(10, canvas_height - 10, str, (255,255,0))
 
 class Event:
     """Pico2D Event Class"""

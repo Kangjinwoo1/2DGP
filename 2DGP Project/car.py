@@ -2,6 +2,9 @@ import random
 
 from pico2d import *
 
+game_speed = 0.4
+difficulty = 300
+
 class RedCar:
     PIXEL_PER_METER = (10.0 / 0.3)              # 10 pixel 30 cm
     RED_CAR_SPEED_KMPH = 60.0                   # Km / Hour
@@ -9,6 +12,7 @@ class RedCar:
     RED_CAR_SPEED_MPS = (RED_CAR_SPEED_MPM / 60.0)
     RED_CAR_SPEED_PPS = (RED_CAR_SPEED_MPS * PIXEL_PER_METER)
     image = None;
+    global speed
 
     def __init__(self):
         self.x, self.y = 1000, 500 + 55
@@ -16,7 +20,7 @@ class RedCar:
         self.distance_y = self.y
         self.count = 600
         self.time_count = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.car_speed = 0.175
         if RedCar.image == None:
             RedCar.image = load_image('redcar.png')
@@ -27,7 +31,7 @@ class RedCar:
         self.y -= self.game_speed
         self.count -= self.game_speed
         self.time_count += self.game_speed
-        if self.time_count >= 600:
+        if self.time_count >= difficulty:
             self.game_speed += 0.01
             self.time_count = 0
         if self.x <= -200:
@@ -60,7 +64,7 @@ class Truck(RedCar):
         self.distance_y = self.y
         self.count = 600
         self.time_count = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.car_speed = 0.3
         if Truck.image == None:
             Truck.image = load_image('truck.png')
@@ -79,7 +83,7 @@ class Truck(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 600:
+            if self.time_count >= difficulty:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x >= 1000:
@@ -114,7 +118,7 @@ class BrownCar(RedCar):
         self.distance_y = self.y
         self.count = 600
         self.time_count = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.car_speed = 0.225
         if BrownCar.image == None:
             BrownCar.image = load_image('browncar.png')
@@ -133,7 +137,7 @@ class BrownCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 600:
+            if self.time_count >= difficulty:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x >= 1000:
@@ -167,7 +171,7 @@ class GrayCar(RedCar):
         self.distance_y = self.y
         self.count = 600
         self.time_count = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.car_speed = 0.165
         if GrayCar.image == None:
             GrayCar.image = load_image('graycar.png')
@@ -186,7 +190,7 @@ class GrayCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 600:
+            if self.time_count >= difficulty:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x >= 1000:
@@ -220,7 +224,7 @@ class BlueCar(RedCar):
         self.distance_y = self.y
         self.count = 600
         self.time_count = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.car_speed = 0.225
         if BlueCar.image == None:
             BlueCar.image = load_image('bluecar.png')
@@ -239,7 +243,7 @@ class BlueCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 600:
+            if self.time_count >= difficulty:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x <= -200:
@@ -267,7 +271,7 @@ class GreenCar(RedCar):
         self.distance_y = self.y
         self.count = 600
         self.time_count = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.car_speed = 0.25
         if GreenCar.image == None:
             GreenCar.image = load_image('greencar.png')
@@ -286,7 +290,7 @@ class GreenCar(RedCar):
             self.y -= self.game_speed
             self.count -= self.game_speed
             self.time_count += self.game_speed
-            if self.time_count >= 600:
+            if self.time_count >= difficulty:
                 self.game_speed += 0.01
                 self.time_count = 0
             if self.x <= -200:
@@ -311,7 +315,7 @@ class YellowCar(RedCar):
     def __init__(self):
         self.x, self.y = 1000, random.randint(2, 18) * 100 + 50
         self.count = 100
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.car_speed = 0.9
         if YellowCar.image == None:
             YellowCar.image = load_image('yellowcar.png')

@@ -1,6 +1,9 @@
 import random
 from pico2d import *
 
+game_speed = 0.4
+difficulty = 300
+
 class Sidewalk:
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
     SCROLL_SPEED_KMPH = 20.0                    # Km / Hour
@@ -14,7 +17,7 @@ class Sidewalk:
     def __init__(self):
         self.x, self.y = 400, 100 + 50
         self.obstacle_x = -200
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.time_count = 0
         if Sidewalk.image == None:
             Sidewalk.image = load_image('sidewalk.png')
@@ -24,7 +27,7 @@ class Sidewalk:
     def update(self, frame_time):
         self.y -= self.game_speed
         self.time_count += self.game_speed
-        if self.time_count >= 600:
+        if self.time_count >= difficulty:
             self.game_speed += 0.01
             self.time_count = 0
         if self.y <= -50:

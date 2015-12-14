@@ -2,6 +2,9 @@ import random
 
 from pico2d import *
 
+game_speed = 0.4
+difficulty = 300
+
 class Boy:
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
     RUN_SPEED_KMPH = 25.0                    # Km / Hour
@@ -9,7 +12,7 @@ class Boy:
     RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
     RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
 
-    TIME_PER_ACTION = 0.5
+    TIME_PER_ACTION = 0.25
     ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
     FRAMES_PER_ACTION = 2
 
@@ -26,7 +29,7 @@ class Boy:
         self.total_frames = 0.0
         self.dir_x = 0
         self.dir_y = 0
-        self.game_speed = 0.3
+        self.game_speed = game_speed
         self.time_count = 0
         self.state = self.UP_STAND
         if Boy.image == None:
@@ -46,7 +49,7 @@ class Boy:
         self.x = clamp(0, self.x, 800)
         self.y = clamp(0, self.y, 600)
         self.time_count += self.game_speed
-        if self.time_count >= 600:
+        if self.time_count >= difficulty:
             self.game_speed += 0.01
             self.time_count = 0
         print("%f, %f" %(self.x, self.y))

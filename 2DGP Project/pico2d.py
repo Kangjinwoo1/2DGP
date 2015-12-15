@@ -50,7 +50,8 @@ def open_canvas(w=int(800), h=int(600), sync=False):
     ret = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024)
     if -1 == ret:
         print('WARNING: Audio functions are disabled due to speaker or sound problems')
-
+    else:
+        audio_on = True
 
     if audio_on:
         Mix_Volume(-1, 128)
@@ -78,7 +79,7 @@ def open_canvas(w=int(800), h=int(600), sync=False):
     update_canvas()
     clear_canvas()
     update_canvas()
-    debug_font = load_font('ConsolaMalgun.TTF', 16)
+    debug_font = load_font('ConsolaMalgun.TTF', 24)
 
 def show_lattice():
     global lattice_on
@@ -148,10 +149,10 @@ def print_fps():
     SDL_SetWindowTitle(window, caption)
 
 
-def debug_print(str):
+def debug_print(str, w, h):
     global canvas_height
     global debug_font
-    debug_font.draw(10, canvas_height - 10, str, (255,255,0))
+    debug_font.draw(w, canvas_height - h, str, (255,255,0))
 
 class Event:
     """Pico2D Event Class"""
@@ -381,7 +382,7 @@ def load_music(name):
 
         return Music(data)
     else:
-        print('audio fuctions cannot work due to sound or speaker problems')
+        print('audio functions cannot work due to sound or speaker problems')
         raise IOError
 
 

@@ -13,6 +13,7 @@ class Road:
     SCROLL_SPEED_PPS = (SCROLL_SPEED_MPS * PIXEL_PER_METER)
 
     image = None
+    bgm = None
 
     def __init__(self):
         self.screen_width = 800
@@ -23,6 +24,10 @@ class Road:
         self.time_count = 0
         self.game_speed = game_speed
         self.score = 0
+        if Road.bgm == None:
+            self.bgm = load_music('bgm.ogg')
+            self.bgm.set_volume(64)
+            self.bgm.repeat_play()
         if Road.image == None:
             Road.image = load_image('road.png')
 

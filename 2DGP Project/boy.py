@@ -34,7 +34,10 @@ class Boy:
         self.state = self.UP_STAND
         if Boy.image == None:
             Boy.image = load_image('boy_animation.png')
-        # fill here
+        if Boy.eat_sound == None:
+            Boy.eat_sound = load_wav('collision.ogg')
+            Boy.eat_sound.set_volume(64)
+        
 
     def update(self, frame_time):
         def clamp(minimum, x, maximum):
@@ -47,7 +50,7 @@ class Boy:
         self.x += (self.dir_x * distance)
         self.y += (self.dir_y * distance) - self.game_speed
         self.x = clamp(0, self.x, 800)
-        self.y = clamp(0, self.y, 600)
+        self.y = clamp(-100, self.y, 600)
         self.time_count += self.game_speed
         if self.time_count >= difficulty:
             self.game_speed += 0.01
@@ -55,8 +58,8 @@ class Boy:
         print("%f, %f" %(self.x, self.y))
 
     def eat(self, ball):
-        # fill here
-        pass
+        self.eat_sound.play()
+
 
     def draw(self):
         self.image.clip_draw(self.frame * 100, self.state * 99, 100, 100, self.x, self.y)

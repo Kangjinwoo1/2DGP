@@ -9,7 +9,7 @@ from car import RedCar, Truck, GreenCar, BlueCar, BrownCar, GrayCar     #YellowC
 from road import Road
 
 name = "main_state"
-
+score = 0
 bombman = None
 red_cars = None
 trucks = None
@@ -18,7 +18,6 @@ sidewalk = None
 
 def create_world():
     global bombman, crossyroad, red_cars, trucks, blue_cars, green_cars, gray_cars, brown_cars, sidewalk       #yellow_cars
-
     bombman = Boy()
 
     brown_cars = [BrownCar() for i in range(10)]
@@ -109,10 +108,10 @@ def create_world():
 def destroy_world():
     global bombman, red_cars, crossyroad, sidewalk
 
-    #del(bombman)
-    #del(red_cars)
-    #del(crossyroad)
-    #del(sidewalk)
+    del(bombman)
+    del(red_cars)
+    del(crossyroad)
+    del(sidewalk)
 
 
 def enter():
@@ -122,8 +121,9 @@ def enter():
     create_world()
 
 
+
 def exit():
-    #destroy_world()
+    destroy_world()
     close_canvas()
 
 
@@ -133,6 +133,7 @@ def pause():
 
 def resume():
     pass
+
 
 def handle_events(frame_time):
     events = get_events()
@@ -194,6 +195,8 @@ def update(frame_time):
     for car in red_cars:
         if collide(bombman, car) and location == 0:
             #print("collide")
+            bombman.eat(car)
+            destroy_world()
             game_framework.run(score_state)
 
 
@@ -205,19 +208,18 @@ def draw(frame_time):
 
     crossyroad.draw_bb()
 
-    for car in red_cars:
-        car.draw_bb()
+    #for car in red_cars:
+    #    car.draw_bb()
     for side in sidewalk:
         side.draw()
-    for side in sidewalk:
-        side.draw_bb()
+    #for side in sidewalk:
+    #    side.draw_bb()
 
-    bombman.draw_bb()
+    #bombman.draw_bb()
     bombman.draw()
-    debug_print('Score = %d' % crossyroad.score)
+    debug_print('Score = %d' % crossyroad.score, 5, 15)
 
     update_canvas()
-
 
 
 

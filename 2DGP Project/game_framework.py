@@ -40,7 +40,6 @@ class TestGameState:
         print("State [%s] draw(%f)" % (self.name, frame_time))
 
 
-
 running = None
 stack = None
 

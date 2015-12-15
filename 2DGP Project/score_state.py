@@ -1,33 +1,31 @@
 import game_framework
-
 from pico2d import *
-import start_state
-import title_state
-import main_state
 
-name = "StartState"
+import main_state
+import title_state
+import json
+
+
+name = "End_State"
 image = None
-logo_time = 0.0
+font = None
 
 def enter():
-    global image
-    open_canvas()
+    global image, font, font1
     image = load_image('score.png')
-
+    font = load_font('ENCR10B.TTF')
 
 def exit():
-    close_canvas()
+    global image,font
+    del(image)
+    del(font)
 
 
-def update(frame_time):
+def pause():
     pass
 
-def draw(frame_time):
-    global image
-    clear_canvas()
-    image.draw(400, 300)
-    #debug_print('Score = %d' % , 50, 50)
-    update_canvas()
+def resume():
+    pass
 
 
 def handle_events(frame_time):
@@ -37,12 +35,28 @@ def handle_events(frame_time):
             game_framework.quit()
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-                game_framework.quit()
-            elif(event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.run(main_state)
+                game_framework.change_state(title_state)
+
+def update(frame_time):
     pass
 
+def draw(frame_time):
+    global image
+    clear_canvas()
+    image.draw(400, 300)
 
-def pause(): pass
+    with open('score.txt', 'r') as f:
+        score_list = json.load(f)
+    score_list.sort(reverse = True)
 
-def resume(): pass
+    top10 = score_list[:10]
+
+    i = 1
+    for score in top10:
+        font.draw(400, 500 - i * 30, "%2d. Score : %d" %(i,score[0]), (0, 50, 250))
+        #font.draw(350, 450 - i * 30, "Time : %d sec, level : %d" %(score[1],score[2]), (100,100,0))
+        i += 1
+    #font.draw(100, 100, "Press ESC To Continue", (100,49,0))
+    #font1.draw(100, 100, "Press ESC To Continue", (255,255,255))
+
+    update_canvas()

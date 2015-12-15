@@ -37,7 +37,7 @@ class Boy:
         if Boy.eat_sound == None:
             Boy.eat_sound = load_wav('collision.ogg')
             Boy.eat_sound.set_volume(64)
-        
+
 
     def update(self, frame_time):
         def clamp(minimum, x, maximum):

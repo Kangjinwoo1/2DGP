@@ -22,6 +22,8 @@ class Road:
         self.screen_height_half = 300
         self.x, self.y1, self.y2 = self.screen_width_half, self.screen_height_half, self.screen_height_half + self.screen_height
         self.time_count = 0
+        self.time = 0
+        self.level = 0
         self.game_speed = game_speed
         self.score = 0
         if Road.bgm == None:
@@ -34,6 +36,7 @@ class Road:
     def update(self, frame_time):
         self.y1 -= self.game_speed
         self.y2 -= self.game_speed
+        self.time += frame_time
         self.time_count += self.game_speed
         self.score += 0.1 * self.game_speed
         if self.time_count >= difficulty:
@@ -43,6 +46,7 @@ class Road:
             self.y1 = self.screen_height_half + self.screen_height
         if self.y2 <= -self.screen_height_half:
             self.y2 = self.screen_height_half + self.screen_height
+        self.level = self.game_speed * 10 - 3
 
     def draw(self):
         self.image.clip_draw(0, 0, self.screen_width, self.screen_height, self.x, self.y1)

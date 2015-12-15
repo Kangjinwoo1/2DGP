@@ -1,7 +1,8 @@
 from pico2d import *
 import score_state
-
+import json
 import game_framework
+import random
 
 from sidewalk import Sidewalk
 from boy import Boy # import Boy class from boy.py
@@ -9,7 +10,9 @@ from car import RedCar, Truck, GreenCar, BlueCar, BrownCar, GrayCar     #YellowC
 from road import Road
 
 name = "main_state"
+time = 0
 score = 0
+level = 0
 bombman = None
 red_cars = None
 trucks = None
@@ -197,10 +200,12 @@ def update(frame_time):
             #print("collide")
             bombman.eat(car)
             destroy_world()
+            record_score()
             game_framework.run(score_state)
 
 
 def draw(frame_time):
+    global score, time, level
     clear_canvas()
     crossyroad.draw()
     for car in red_cars:
@@ -219,8 +224,24 @@ def draw(frame_time):
     bombman.draw()
     debug_print('Score = %d' % crossyroad.score, 5, 15)
 
+    score = crossyroad.score
+    time = crossyroad.time
+    level = crossyroad.level
+
     update_canvas()
 
+def record_score():
+    global score, time, level
+    #read previous data
+    with open('score.txt', 'r') as f:
+        score_list = json.load(f)
+
+    # add new score
+    score_list.append([int(score), int(time), int(level)])
+
+    #write all the scores
+    with open('score.txt', 'w') as f:
+       json.dump(score_list , f)
 
 
 

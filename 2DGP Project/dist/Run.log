@@ -1,18 +1,123 @@
 Traceback (most recent call last):
   File "mygame.py", line 12, in <module>
-  File "C:\2DGP\kjw\game_framework.py", line 98, in run
-    stack[-1].exit()
-  File "C:\2DGP\kjw\main_state.py", line 66, in exit
-    destroy_world()
-  File "C:\2DGP\kjw\main_state.py", line 53, in destroy_world
-    del(crossyroad)
-UnboundLocalError: local variable 'crossyroad' referenced before assignment
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\start_state.py", line 28, in update
+    game_framework.run(title_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 92, in run
+    stack[-1].handle_events(frame_time)
+  File "C:\2DGP\2DGP Project\title_state.py", line 29, in handle_events
+    game_framework.run(main_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 87, in run
+    start_state.enter()
+  File "C:\2DGP\2DGP Project\main_state.py", line 124, in enter
+    create_world()
+  File "C:\2DGP\2DGP Project\main_state.py", line 24, in create_world
+    bombman = Boy()
+  File "C:\2DGP\2DGP Project\boy.py", line 38, in __init__
+    Boy.eat_sound = load_wav('collision.ogg')
+  File "C:\2DGP\2DGP Project\pico2d.py", line 394, in load_wav
+    raise IOError
+OSError
 Traceback (most recent call last):
   File "mygame.py", line 12, in <module>
-  File "C:\2DGP\kjw\game_framework.py", line 98, in run
-    stack[-1].exit()
-  File "C:\2DGP\kjw\main_state.py", line 66, in exit
-    destroy_world()
-  File "C:\2DGP\kjw\main_state.py", line 53, in destroy_world
-    del(crossyroad)
-UnboundLocalError: local variable 'crossyroad' referenced before assignment
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\start_state.py", line 28, in update
+    game_framework.run(title_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 92, in run
+    stack[-1].handle_events(frame_time)
+  File "C:\2DGP\2DGP Project\title_state.py", line 29, in handle_events
+    game_framework.run(main_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 87, in run
+    start_state.enter()
+  File "C:\2DGP\2DGP Project\main_state.py", line 124, in enter
+    create_world()
+  File "C:\2DGP\2DGP Project\main_state.py", line 24, in create_world
+    bombman = Boy()
+  File "C:\2DGP\2DGP Project\boy.py", line 38, in __init__
+    Boy.eat_sound = load_wav('collision.ogg')
+  File "C:\2DGP\2DGP Project\pico2d.py", line 394, in load_wav
+    raise IOError
+OSError
+Traceback (most recent call last):
+  File "mygame.py", line 12, in <module>
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\start_state.py", line 28, in update
+    game_framework.run(title_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 92, in run
+    stack[-1].handle_events(frame_time)
+  File "C:\2DGP\2DGP Project\title_state.py", line 29, in handle_events
+    game_framework.run(main_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 87, in run
+    start_state.enter()
+  File "C:\2DGP\2DGP Project\main_state.py", line 124, in enter
+    create_world()
+  File "C:\2DGP\2DGP Project\main_state.py", line 24, in create_world
+    bombman = Boy()
+  File "C:\2DGP\2DGP Project\boy.py", line 38, in __init__
+    Boy.eat_sound = load_wav('collision.ogg')
+  File "C:\2DGP\2DGP Project\pico2d.py", line 394, in load_wav
+    raise IOError
+OSError
+Traceback (most recent call last):
+  File "mygame.py", line 12, in <module>
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\start_state.py", line 28, in update
+    game_framework.run(title_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 92, in run
+    stack[-1].handle_events(frame_time)
+  File "C:\2DGP\2DGP Project\title_state.py", line 29, in handle_events
+    game_framework.run(main_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\main_state.py", line 199, in update
+    if collide(bombman, car) and location == 0:
+NameError: name 'bombman' is not defined
+Traceback (most recent call last):
+  File "mygame.py", line 12, in <module>
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\start_state.py", line 28, in update
+    game_framework.run(title_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 92, in run
+    stack[-1].handle_events(frame_time)
+  File "C:\2DGP\2DGP Project\title_state.py", line 29, in handle_events
+    game_framework.run(main_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\main_state.py", line 199, in update
+    if collide(bombman, car) and location == 0:
+NameError: name 'bombman' is not defined
+Traceback (most recent call last):
+  File "mygame.py", line 12, in <module>
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\start_state.py", line 28, in update
+    game_framework.run(title_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 92, in run
+    stack[-1].handle_events(frame_time)
+  File "C:\2DGP\2DGP Project\title_state.py", line 29, in handle_events
+    game_framework.run(main_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\main_state.py", line 199, in update
+    if collide(bombman, car) and location == 0:
+NameError: name 'bombman' is not defined
+Traceback (most recent call last):
+  File "mygame.py", line 12, in <module>
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\start_state.py", line 28, in update
+    game_framework.run(title_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 92, in run
+    stack[-1].handle_events(frame_time)
+  File "C:\2DGP\2DGP Project\title_state.py", line 29, in handle_events
+    game_framework.run(main_state)
+  File "C:\2DGP\2DGP Project\game_framework.py", line 93, in run
+    stack[-1].update(frame_time)
+  File "C:\2DGP\2DGP Project\main_state.py", line 199, in update
+    if collide(bombman, car) and location == 0:
+NameError: name 'bombman' is not defined

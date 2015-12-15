@@ -95,7 +95,7 @@ py2exe_options = dict(
     )
 
 
-resources = "bluecar.png boy_animation.png browncar.png graycar.png greencar.png kpu_credit.png redcar.png road.png score.png sidewalk.png title.png truck.png yellowcar.png".split()
+resources = "bluecar.png boy_animation.png browncar.png graycar.png greencar.png kpu_credit.png redcar.png road.png score.png sidewalk.png title.png truck.png yellowcar.png ".split()
 
 if platform.architecture()[0] == '32bit':
     sdl_folder = './SDL2/x86/'

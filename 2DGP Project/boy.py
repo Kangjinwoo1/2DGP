@@ -2,8 +2,8 @@ import random
 
 from pico2d import *
 
-game_speed = 0.4
-difficulty = 300
+game_speed = 0.3
+difficulty = 600
 
 class Boy:
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
@@ -53,8 +53,9 @@ class Boy:
         self.y = clamp(-100, self.y, 600)
         self.time_count += self.game_speed
         if self.time_count >= difficulty:
-            self.game_speed += 0.01
             self.time_count = 0
+            if self.game_speed < 0.7:
+                self.game_speed += 0.01
         print("%f, %f" %(self.x, self.y))
 
     def eat(self, ball):

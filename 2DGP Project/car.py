@@ -2,8 +2,8 @@ import random
 
 from pico2d import *
 
-game_speed = 0.4
-difficulty = 300
+game_speed = 0.3  #0.4
+difficulty = 600  #300
 
 class RedCar:
     PIXEL_PER_METER = (10.0 / 0.3)              # 10 pixel 30 cm
@@ -32,8 +32,9 @@ class RedCar:
         self.count -= self.game_speed
         self.time_count += self.game_speed
         if self.time_count >= difficulty:
-            self.game_speed += 0.01
             self.time_count = 0
+            if self.game_speed < 0.7:
+                self.game_speed += 0.01
         if self.x <= -200:
             self.x += 2000
         if self.count <= 0:

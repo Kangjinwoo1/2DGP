@@ -1,8 +1,8 @@
 import random
 from pico2d import *
 
-game_speed = 0.4
-difficulty = 300
+game_speed = 0.3
+difficulty = 600
 
 class Sidewalk:
     PIXEL_PER_METER = (10.0 / 0.3)           # 10 pixel 30 cm
@@ -28,8 +28,9 @@ class Sidewalk:
         self.y -= self.game_speed
         self.time_count += self.game_speed
         if self.time_count >= difficulty:
-            self.game_speed += 0.01
             self.time_count = 0
+            if self.game_speed < 0.7:
+                self.game_speed += 0.01
         if self.y <= -50:
             self.y = random.randint(7, 12) * 100 + 50
             #self.obstacle_x = 100 * random.randint(1, 8)
